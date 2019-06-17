@@ -1,0 +1,16 @@
+server:
+  port: 9001
+    
+    
+spring:  application:    name: zuul
+eureka:  client:    service-url:      defaultZone: http://localhost:9000/eureka/
+      
+      
+zuul:  routes:    user:                           #定义user模块
+      service-id: user-provider     #用户模块服务名称      path: /user/**                #url中包含user的请求，可以访问服务名为user_provider的微服务
+    goods:                          #定义goods模块
+      service-id: goods-provider    #商品模块服务名称
+      path: /goods/**               #url中包含goods的请求，可以访问服务名为goods_provider的微服务
+    orders:                         #定义orders模块
+      service-id: orders-provider   #订单模块服务名称
+      path: /orders/**              #url中包含orders的请求，可以访问服务名为orders_provider的微服务                                 
